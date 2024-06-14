@@ -215,7 +215,7 @@ const Signup = () => {
                             </div>
                             {formik.touched.fullName ? <p>{formik.errors.fullName}</p> : null}
 
-                            <label htmlFor="lastName">Last Name</label>
+                            <label htmlFor="lastName">Last Name*</label>
                             <div className="custom-group">
                                 <input
                                     className="field"
@@ -229,7 +229,7 @@ const Signup = () => {
                             </div>
                             {formik.touched.lastName ? <p>{formik.errors.lastName}</p> : null}
 
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">Email*</label>
                             <div className="custom-group">
                                 <input
                                     className="field"
@@ -243,7 +243,7 @@ const Signup = () => {
                             </div>
                             {formik.touched.email ? <p>{formik.errors.email}</p> : null}
 
-                            <label htmlFor="phoneNumber">Phone Number</label>
+                            <label htmlFor="phoneNumber">Phone Number*</label>
                             <div className="custom-group">
                                 <input
                                     className="field"
@@ -258,7 +258,7 @@ const Signup = () => {
                             </div>
                             {formik.touched.phoneNumber ? <p>{formik.errors.phoneNumber}</p> : null}
 
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password">Password*</label>
                             <div className="custom-group">
                                 <input
                                     className="field"
@@ -273,7 +273,7 @@ const Signup = () => {
                             </div>
                             {formik.touched.password ? <p>{formik.errors.password}</p> : null}
 
-                            <label htmlFor="confirmPassword">Confirm Password</label>
+                            <label htmlFor="confirmPassword">Confirm Password*</label>
                             <div className="custom-group">
                                 <input
                                     className="field"

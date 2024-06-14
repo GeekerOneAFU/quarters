@@ -1,7 +1,7 @@
 .outer-app-container {
   width: 100%;
   height: auto;
-  min-height: 95vh;
+  min-height: 92vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,40 @@
   margin: 0;
 }
 
+.outer-app-box .outer-app-box-header-center {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.outer-app-box .outer-app-box-header-center .envelop {
+  width: fit-content;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: larger;
+  gap: 10px;
+  padding: 5px;
+  margin: 0;
+  border-radius: 50px;
+  background-color: #e7f8f0;
+  outline: 4px solid #d2f1e3;
+  box-shadow: 0 0 0 8px #e7f8f0;
+}
+
+.outer-app-box .outer-app-box-header-center p {
+  color: #505050;
+  font-size: 14px;
+}
+
 .outer-app-box .outer-app-box-header h1 {
   font-size: 25px;
   font-weight: 450;
@@ -135,6 +169,20 @@
   background-color: transparent;
   border: 1px solid #d0d5dd;
   border-radius: 25px;
+}
+
+.outer-app-box .outer-app-box-body form .custom-group-verification {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 10px;
+  padding: 0;
+  margin: 5px 0 0 0;
+  height: auto;
+  background-color: transparent;
 }
 
 .radio-title {
@@ -209,23 +257,24 @@ input[type="radio"]:checked {
   box-shadow: var(--radio-active-effect);
 }
 
-.outer-app-box .outer-app-box-body form .custom-group .round-field {
+.outer-app-box .outer-app-box-body form .custom-group-verification .field {
   width: 60px;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 25px;
-  color: #667085;
+  border-radius: 50px;
+  color: #0f9b5a;
   background-color: transparent;
-  border: none;
-  font-size: 22px;
+  border: 2px solid #0f9b5a;
+  font-size: 30px;
   margin: 0;
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   outline: none;
   transition: all 0.2s ease-in-out;
   resize: none;
+  text-align: center;
 }
 
 .outer-app-box .outer-app-box-body form .custom-group .field {
@@ -442,7 +491,7 @@ input[type="radio"]:checked {
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  padding: 20px 35px;
+  padding: 20px 25px;
   margin: 0;
   font-size: 14px;
 }

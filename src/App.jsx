@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthProvider'
 import { ToastContainer } from 'react-toastify'
 import Signup from './pages/Signup'
 import Verification from './pages/Verification'
+import Welcome from './pages/Welcome'
 import NotFound from './pages/NotFound'
 import Login from './pages/Login'
 import ProtectedRoute from './private/ProtectedRoute'
@@ -19,6 +20,7 @@ const App = () => {
                     <Route path="*" element={<NotFound />} />
                     <Route path="/" element={<Signup />} />
                     <Route path="/verify" element={<Verification />} />
+                    <Route path="/welcome" element={<Welcome />} />
                     <Route path="/login" element={<Login />} />
                     <Route
                         path="/admin/*"

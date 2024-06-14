@@ -38,6 +38,7 @@ const Verification = () => {
             transition: {
                 duration: 1.5,
                 ease: "easeInOut",
+                delay: 1.5, 
             },
         },
     };

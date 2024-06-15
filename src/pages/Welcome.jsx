@@ -72,13 +72,32 @@ const Welcome = () => {
 
                     <div className="outer-app-box-body">
                         <div className="custom-group-verification">
-                            <p>
-                                Hi [First name]
-                                Thank you for signing up to Quarters, you are the 1089th person on our wait-list! (let’s make it go up every time someone signs up but start it at 1000)
-                                As we prepare for launch we’re offering cash-back to pre-load your Quarters Wallet. For every referral that creates an account you get $5. The person with the most successful referrals wins $5,000. 
-                                We’ve emailed you some information on what you can expect as a(n) [user type] when we launch.
-                                Let’s change renting together, you can keep the change.
-                            </p> 
+                            <div className="welcome-message">
+                                <div className="welcome-icon">
+                                    <img src="./images/fav-1.png" alt="Welcome icon" />
+                                </div>
+                                <div className="paragraph">
+                                    <p>
+                                        Hi <strong>John Doe</strong>
+                                    </p>
+                                    <p>
+                                        Thank you for signing up to Quarters, 
+                                        you are the # <strong>1089th</strong> person on our wait-list!
+                                    </p>
+                                    <p>
+                                        As we prepare for launch we’re offering cash-back to pre-load 
+                                        your Quarters Wallet. For every referral that creates an account 
+                                        you get $5. The person with the most successful referrals wins $5,000.
+                                    </p>
+                                    <p> 
+                                        We’ve emailed you some information on what you can 
+                                        expect as a(n) <strong>Renter</strong> when we launch. 
+                                    </p> 
+                                    <p>
+                                        Let’s change renting together, you can keep the change.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

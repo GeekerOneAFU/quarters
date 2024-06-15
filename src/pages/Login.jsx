@@ -7,7 +7,10 @@ import axios from 'axios'
 import { useAuth } from '../context/AuthProvider'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUnlockKeyhole, FaAt, FaEye, FaEyeSlash, FaRightToBracket } from 'react-icons/fa6'
+import { FaEye, FaEyeSlash, FaRightToBracket } from 'react-icons/fa6'
+import Header from '../partials/Header';
+import Footer from '../partials/Footer';
+import { motion } from 'framer-motion';
 
 const Login = () => {
     const { user, login } = useAuth()
@@ -15,6 +18,33 @@ const Login = () => {
 
     const [isShown, setIsShown] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+
+    const leftCurveVariants = {
+        hidden: { opacity: 0, x: "50%", y: "-50%" },
+        visible: {
+            opacity: 1,
+            x: "0%",
+            y: "0%",
+            transition: {
+                duration: 1.5,
+                ease: "easeInOut",
+            },
+        },
+    };
+    
+    const bottomRightShapeVariants = {
+        hidden: { opacity: 0, x: "100%", y: "100%" },
+        visible: {
+            opacity: 1,
+            x: "0%",
+            y: "0%",
+            transition: {
+                duration: 1.5,
+                ease: "easeInOut",
+                delay: 1.5, 
+            },
+        },
+    };
 
     const togglePassword = () => {
         setIsShown((isShown) => !isShown)
@@ -62,68 +92,93 @@ const Login = () => {
         }
     })
 
-    document.title = 'MyQuarters | Login'
+    document.title = 'Quarters | Login'
 
     if (user) {
         navigate(`/${user.role}/dashboard`)
     }
 
     return (
-        <div className="outer-app-container">
-            <div className="outer-app-box">
-                <div className="outer-app-box-header">
-                    <h1>Login</h1>
-                </div>
+        <>
+            <Header />
+            <div className="outer-app-container">
+            <motion.img
+                    src="./images/v1.png"
+                    className="left-curve"
+                    alt="Left curve decoration"
+                    initial="hidden"
+                    animate="visible"
+                    variants={leftCurveVariants}
+                />
+                <motion.img
+                    src="./images/v2.png"
+                    className="bottom-right-shape"
+                    alt="Bottom right shape decoration"
+                    initial="hidden"
+                    animate="visible"
+                    variants={bottomRightShapeVariants}
+                />
+                <motion.div 
+                    className="outer-app-box"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1 }}
+                >
+                    <div className="outer-app-box-header">
+                        <h1>Login</h1>
+                    </div>
 
-                <div className="outer-app-box-body">
-                    <form onSubmit={formik.handleSubmit} autoComplete="off">
-                        <div className="custom-group">
-                            <span><FaAt /></span>
-                            <input
-                                className="field"
-                                id="email"
-                                name="email"
-                                value={formik.values.email} 
-                                onChange={formik.handleChange} 
-                                onBlur={formik.handleBlur}
-                                placeholder="Enter your email"
-                            />
-                        </div>
-                        {formik.touched.email ? <p>{formik.errors.email}</p> : null}
-                    
-                        <div className="custom-group">
-                            <span><FaUnlockKeyhole /></span>
-                            <input
-                                className="field"
-                                type={isShown ? 'text' : 'password'}
-                                id="password"
-                                name="password"
-                                value={formik.values.password} 
-                                onChange={formik.handleChange}
-                                onBlur={formik.handleBlur}
-                                placeholder="Enter your password"
-                            />
-                            <a onClick={togglePassword}>{isShown ? <FaEyeSlash title="Toggle to hide password" /> : <FaEye title="Toggle to show password" />}</a>
-                        </div>
-                        {formik.touched.password ? <p>{formik.errors.password}</p> : null}
+                    <div className="outer-app-box-body">
+                        <form onSubmit={formik.handleSubmit} autoComplete="off">
+                            <label htmlFor="email">Email</label>
+                            <div className="custom-group">
+                                <input
+                                    className="field"
+                                    id="email"
+                                    name="email"
+                                    value={formik.values.email} 
+                                    onChange={formik.handleChange} 
+                                    onBlur={formik.handleBlur}
+                                    placeholder="Enter your email"
+                                />
+                            </div>
+                            {formik.touched.email ? <p>{formik.errors.email}</p> : null}
                         
-                        <button type="submit" className="custom-button" disabled={isLoading}>
-                            {
-                                isLoading ? 
-                                <>Please Wait... <div className="loader"></div></> 
-                                : <>Login <span><FaRightToBracket /></span></>
-                            }
-                        </button>
-                    </form>
-                </div>
+                            <label htmlFor="password">Password</label>
+                            <div className="custom-group">
+                                <input
+                                    className="field"
+                                    type={isShown ? 'text' : 'password'}
+                                    id="password"
+                                    name="password"
+                                    value={formik.values.password} 
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder="Enter your password"
+                                />
+                                <a onClick={togglePassword}>{isShown ? <FaEyeSlash title="Toggle to hide password" /> : <FaEye title="Toggle to show password" />}</a>
+                            </div>
+                            {formik.touched.password ? <p>{formik.errors.password}</p> : null}
+                            
+                            <button type="submit" className="custom-button" disabled={isLoading}>
+                                {
+                                    isLoading ? 
+                                    <>Please Wait... <div className="loader"></div></> 
+                                    : <>Login <span><FaRightToBracket /></span></>
+                                }
+                            </button>
+                        </form>
+                    </div>
 
-                <div className="outer-app-box-footer">
-                    <p>
-                        Don't have an account? <Link className="link" to="/signup">Sign up</Link>
-                    </p>
-                </div>
+                    <div className="outer-app-box-footer">
+                        <p>
+                            Don't have an account? <Link className="link" to="/signup">Sign up</Link>
+                        </p>
+                    </div>
+                </motion.div>
+                <Footer />
             </div>
-        </div>
+        </>
     )
 }
 

@@ -93,10 +93,10 @@ const Signup = () => {
                         theme: "colored",
                     });
 
-                    navigate(`/${response.data.role}/dashboard`);
+                    navigate(`/verify`);
                 }, 3000);
             } catch (error) {
-                const errorMessage = error.response?.data?.message || 'Signup failed';
+                const errorMessage = error.response?.data?.message || 'Credententials invalidated!';
                 console.error('Signup error:', error);
                 setTimeout(() => {
                     toast.error(errorMessage, {

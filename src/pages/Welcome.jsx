@@ -143,7 +143,7 @@ const Welcome = () => {
                                         className="custom-button"
                                         disabled={isLoading}
                                     >
-                                        {isLoading ? 'Loading...' : 'Get Started'}
+                                        {isLoading ? 'Loading...' : 'Send Invite'}
                                     </button>
                                 </form>
                             </div>

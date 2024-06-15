@@ -23,6 +23,7 @@ const handleInput = (e, nextInput, prevInput) => {
 
 const Verification = () => {
 
+    const { user } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -122,6 +123,7 @@ const Verification = () => {
                                             if (inputRefs[0].current) inputRefs[0].current.focus();
                                         }
                                     }}
+                                    required
                                 />
                                 <input
                                     className="field"
@@ -141,6 +143,7 @@ const Verification = () => {
                                             if (inputRefs[0].current) inputRefs[0].current.focus();
                                         }
                                     }}
+                                    required
                                 />
                                 <input
                                     className="field"
@@ -160,6 +163,7 @@ const Verification = () => {
                                             if (inputRefs[1].current) inputRefs[1].current.focus();
                                         }
                                     }}
+                                    required
                                 />
                                 <input
                                     className="field"
@@ -179,17 +183,34 @@ const Verification = () => {
                                             if (inputRefs[2].current) inputRefs[2].current.focus();
                                         }
                                     }}
+                                    required
                                 />
                             </div>
                             
                             <div className="row-flex-center">
-                                <button type="submit" className="custom-button short" disabled={isLoading}>
-                                    {
-                                        isLoading ?
-                                            <>Please Wait... <div className="loader"></div></>
-                                            : 'Verify Email Address'
-                                    }
-                                </button>
+                                {
+                                    inputRefs.some(ref => ref.current && ref.current.value === '') ? (
+                                        <button 
+                                            type="submit" 
+                                            className="custom-button short disabled" 
+                                            disabled
+                                        >
+                                            Verify Email Address
+                                        </button>
+                                    ) : (
+                                        <button 
+                                            type="submit" 
+                                            className="custom-button short" 
+                                            disabled={isLoading}
+                                        >
+                                            {
+                                                isLoading ?
+                                                    <>Please Wait... <div className="loader"></div></>
+                                                    : 'Verify Email Address'
+                                            }
+                                        </button>
+                                    )
+                                }
                             </div>
                             
                         </form>

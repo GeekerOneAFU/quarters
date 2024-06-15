@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 
 const Welcome = () => {
 
+    const { user } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
 
     const leftCurveVariants = {
@@ -41,6 +42,30 @@ const Welcome = () => {
             },
         },
     };
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string()
+                .email('Invalid email address')
+                .required('Email is required'),
+        }),
+        onSubmit: async (values) => {
+            setIsLoading(true);
+            try {
+                const response = await axios.post('https://reqres.in/api/register', values);
+                if (response.status === 200) {
+                    toast.success('Account created successfully');
+                    setIsLoading(false);
+                }
+            } catch (error) {
+                toast.error(error.response.data.error);
+                setIsLoading(false);
+            }
+        },
+    });
 
     return (
         <>
@@ -97,6 +122,30 @@ const Welcome = () => {
                                         Let’s change renting together, you can keep the change.
                                     </p>
                                 </div>
+
+                                <form autoComplete="off" onSubmit={formik.handleSubmit}>
+                                    <label htmlFor="email">Refferal Email</label>
+                                        <div className="custom-group">
+                                            <input
+                                                className="field"
+                                                id="email"
+                                                name="email"
+                                                value={formik.values.email}
+                                                onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
+                                                placeholder="Enter referrel email"
+                                            />
+                                        </div>
+                                    {formik.touched.email ? <p>{formik.errors.email}</p> : null}
+
+                                    <button
+                                        type="submit"
+                                        className="custom-button"
+                                        disabled={isLoading}
+                                    >
+                                        {isLoading ? 'Loading...' : 'Get Started'}
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
